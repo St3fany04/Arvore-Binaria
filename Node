@@ -1,0 +1,13 @@
+package br.edu.ifms.ed.av1;
+
+public class Node<T extends Comparable<T>> {
+    public T key;
+    public Node<T> left;
+    public Node<T> right;
+
+    public Node(T key) {
+        this.key = key;
+        this.left = null;
+        this.right = null;
+    }
+}
