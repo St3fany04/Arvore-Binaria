@@ -1,0 +1,43 @@
+package br.edu.ifms.ed.av1;
+
+public class ArvoreBinaria<T extends Comparable<T>> {
+    private Node<T> root;
+
+    public ArvoreBinaria() {
+        this.root = null;
+    }
+
+    // Método público que inicia a inserção recursiva
+    public void insert(T key) {
+        root = insertRec(root, key);
+    }
+
+    // Inserção recursiva: retorna o nó atualizado/subárvore após a inserção
+    private Node<T> insertRec(Node<T> node, T key) {
+        if (node == null) {
+            return new Node<>(key);
+        }
+
+        int cmp = key.compareTo(node.key);
+        if (cmp < 0) {
+            node.left = insertRec(node.left, key);
+        } else if (cmp > 0) {
+            node.right = insertRec(node.right, key);
+        } // se igual, não insere duplicatas (pode ajustar se quiser outra política)
+
+        return node;
+    }
+
+    // Percurso inorder para teste / visualização
+    public void inorder() {
+        inorderRec(root);
+        System.out.println();
+    }
+
+    private void inorderRec(Node<T> node) {
+        if (node == null) return;
+        inorderRec(node.left);
+        System.out.print(node.key + " ");
+        inorderRec(node.right);
+    }
+}
