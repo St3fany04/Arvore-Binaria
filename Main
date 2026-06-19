@@ -1,0 +1,12 @@
+package br.edu.ifms.ed.av1;
+
+public class Main {
+    public static void main(String[] args) {
+        ArvoreBinaria<Integer> tree = new ArvoreBinaria<>();
+        int[] values = {50, 30, 20, 40, 70, 60, 80};
+        for (int v : values) tree.insert(v);
+
+        System.out.print("In-order: ");
+        tree.inorder(); // deverá imprimir: 20 30 40 50 60 70 80
+    }
+}
